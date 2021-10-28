@@ -1,27 +1,23 @@
 #define _USE_MATH_DEFINES
 
-#include<iostream>
 #include<cmath>
+#include<iostream>
 
 using namespace std;
 
-/**
-* \brief Математическая функция, рассчитывающая значение V
-* \param const double x - константа, имеющая тип данных с плавающей точкой двойной точности
-* \param const double y - константа, имеющая тип данных с плавающей точкой двойной точности
-* \param const double R - константа, имеющая тип данных с плавающей точкой двойной точности
-* \return Возвращает значение V
+/** 
+* \brief Математическая функция, рассчитывающая значение объема
+* \param const double R - значение радиуса
+* \return Возвращает значение Volume - объема
 **/
-double getV(const double R);
+double getVolume(const double radius);
 
-/**
-* \brief Математическая функция, рассчитывающая значение V
-* \param const double x - константа, имеющая тип данных с плавающей точкой двойной точности
-* \param const double y - константа, имеющая тип данных с плавающей точкой двойной точности
-* \param const double R - константа, имеющая тип данных с плавающей точкой двойной точности
-* \return Возвращает значение V
+/** 
+* \brief Математическая функция, рассчитывающая значение объема
+* \param const double R - значение радиуса
+* \return Возвращает значение SurfaceArea - площади
 **/
-double getS(const double R);
+double getSurfaceArea(const double radius);
 
 /**
  * \brief Точка входа в программу.
@@ -30,19 +26,19 @@ double getS(const double R);
 int main()
 {
   cout <<"Введите число и нажмите Enter: \n";
-  double R;
-  cin >> R;
-  const auto V=getV(R);
-  const auto S=getS(R);
-  cout <<" R= "<< R <<"\n V= "<< V <<" \n S= "<< S;
+  double radius;
+  cin >> radius;
+  const auto Volume = getVolume(radius);
+  const auto SurfaceArea = getSurfaceArea(radius);
+  cout <<" radius = "<< radius <<"\n Volume = "<< Volume <<" \n SurfaceArea = "<< SurfaceArea;
 }
 
-double getV(const double R)
+double getVolume(const double radius)
 {
-  return 4.0/3.0 * R * M_PI;
+  return 4.0/3.0 * radius * M_PI;
 }
 
-double getS(const double R)
+double getSurfaceArea(const double radius)
 {
-  return 4 * M_PI * pow(R, 2);
+  return 4 * M_PI * pow(radius, 2);
 }
