@@ -5,11 +5,18 @@ using namespace std;
 
 /**
 * \brief Математическая функция, рассчитывающая значение функции y
-* \param const double x - константа, имеющая тип данных с плавающей точкой двойной точности
+* \param x - переменная
 * \return Возвращает значение функции y
 **/
 
 double gety(const double x);
+
+/**
+* \brief Узнает, существует ли функция в заданной точке \a x.
+* \param x Заданная точка.
+* \return true, если значение функции в заданной точке \a x существует.
+*/
+bool isCalculated(double x);
 
 /**
 * \brief Точка входа в программу.
@@ -28,4 +35,9 @@ double gety(const double x)
     cout << "y = " << x + sqrt(x) + pow(x, 1.0/3.0) - 2.5 << endl;
   }
   return 1;
+}
+
+bool isCalculated(const double x)
+{
+  return x >= 0;
 }
