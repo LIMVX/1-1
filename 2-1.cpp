@@ -1,27 +1,25 @@
-#define _USE_MATH_DEFINES
-
+#define _USE_MATH_DEFINES // for C++
 #include <cmath>
 #include <iostream>
-
-using namespace std; 
-
+using namespace std;
 /**
 * \brief Математическая функция, рассчитывающая значение TrapezoidSurfaceArea - площадь трапеции
-* \param const double height - высота трапеции
-* \param const double trapezoidbase1 - основание трапеции 1
-* \param const double trapezoidbase2 - основание трапеции 2
+* \param height - высота трапеции
+* \param trapezoidbase1 - основание трапеции 1
+* \param trapezoidbase2 - основание трапеции 2
 * \return Возвращает значение TrapezoidSurfaceArea - площадь трапеции
 **/
-
-double getTrapezoidSurfaceArea(const double height, const double trapezoidbase1, const double trapezoidbase2);
+double getTrapezoidArea( const double trapezoidbase1, const double trapezoidbase2, const double height);
 
 /**
 * \brief Математическая функция, рассчитывающая значение CircleSurfaceArea - площадь круга
-* \param const double radius - радиус
+* \param radius - радиус
 * \return Возвращает значение CircleSurfaceArea - площадь круга
 **/
 
-double getCircleSurfaceArea(const double radius);
+double getCircleArea(const double radius);
+
+enum class Measuares { TRAPEZOID_AREA = 1, CIRCLE_AREA };
 
 /**
 * \brief Точка входа в программу.
@@ -29,19 +27,47 @@ double getCircleSurfaceArea(const double radius);
 */
 int main()
 {
-  double height, trapezoidbase1, trapezoidbase2, radius;
-  cin >> height >> trapezoidbase1 >> trapezoidbase2 >> radius;
-  const auto TrapezoidSurfaceArea = getTrapezoidSurfaceArea(height, trapezoidbase1, trapezoidbase2);
-  const auto CircleSurfaceArea = getCircleSurfaceArea(radius)
-  cout<< "TrapezoidSurfaceArea=" << TrapezoidSurfaceArea  << "\n CircleSurfaceArea=" << CircleSurfaceArea ;
-}
+cout << "Введите для" << "\nрасчета площади трапеции - "
+<< static_cast<int>(Measuares::TRAPEZOID_AREA)
+<< "\nрасчета площади круга - "
+<< static_cast<int>(Measuares::CIRCLE_AREA)
+<< "\n";
 
-double getTrapezoidSurfaceArea(const double height, const double trapezoidbase1, const double trapezoidbase2)
+int temp;
+cin >> temp;
+Measuares action = static_cast<Measuares>(temp);
+switch (action)
 {
-  return height * (trapezoidbase1 + trapezoidbase2) / 2.0;
+case Measuares::TRAPEZOID_AREA:
+{
+double trapezoidbase1;
+cin >> trapezoidbase1;
+double trapezoidbase2;
+cin >> trapezoidbase2;
+double height;
+cin >> height;
+const double trapezoidArea = getTrapezoidArea(trapezoidbase1, trapezoidbase2, height);
+cout << "Площадь трапеции = " << trapezoidArea;
+break;
 }
-
-double getCircleSurfaceArea(const double radius)
+case Measuares::CIRCLE_AREA:
 {
-  return pow(radius, 2) * M_PI;
+double radius;
+cin >> radius;
+const double circleArea = getCircleArea(radius);
+cout << "Площадь круга = " << circleArea;
+break;
+}
+default:
+break;
+}
+  return 0;
+}
+double getTrapezoidArea(const double trapezoidbase1, const double trapezoidbase2, const double height)
+{
+  return (trapezoidbase1 + trapezoidbase2) / 2 * height;
+}
+double getCircleArea( const double radius)
+{
+  return M_PI * pow(radius, 2);
 }
