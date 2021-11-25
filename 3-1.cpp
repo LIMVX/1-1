@@ -32,7 +32,7 @@ double gety(const double x)
 {
   for(double x = 0.4; x <= 1; x = x + 0.05)
   {
-    cout << "y = " << x + sqrt(x) + pow(x, 1.0/3.0) - 2.5 << endl;
+    cout << "y = " << x + sqrt(x) + cbrt(x) - 2.5 << endl;
   }
   return 1;
 }
