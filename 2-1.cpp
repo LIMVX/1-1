@@ -27,40 +27,40 @@ enum class Measuares { TRAPEZOID_AREA = 1, CIRCLE_AREA };
 */
 int main()
 {
-cout << "Введите для" << "\nрасчета площади трапеции - "
-<< static_cast<int>(Measuares::TRAPEZOID_AREA)
-<< "\nрасчета площади круга - "
-<< static_cast<int>(Measuares::CIRCLE_AREA)
-<< "\n";
+  cout << "Введите для" << "\nрасчета площади трапеции - "
+  << static_cast<int>(Measuares::TRAPEZOID_AREA)
+  << "\nрасчета площади круга - "
+  << static_cast<int>(Measuares::CIRCLE_AREA)
+  << "\n";
 
-int temp;
-cin >> temp;
-Measuares action = static_cast<Measuares>(temp);
-switch (action)
-{
-case Measuares::TRAPEZOID_AREA:
-{
-double trapezoidbase1;
-cin >> trapezoidbase1;
-double trapezoidbase2;
-cin >> trapezoidbase2;
-double height;
-cin >> height;
-const double trapezoidArea = getTrapezoidArea(trapezoidbase1, trapezoidbase2, height);
-cout << "Площадь трапеции = " << trapezoidArea;
-break;
-}
-case Measuares::CIRCLE_AREA:
-{
-double radius;
-cin >> radius;
-const double circleArea = getCircleArea(radius);
-cout << "Площадь круга = " << circleArea;
-break;
-}
-default:
-break;
-}
+  int temp;
+  cin >> temp;
+  Measuares action = static_cast<Measuares>(temp);
+  switch (action)
+  {
+    case Measuares::TRAPEZOID_AREA:
+    {
+      double trapezoidbase1;
+      cin >> trapezoidbase1;
+      double trapezoidbase2;
+      cin >> trapezoidbase2;
+      double height;
+      cin >> height;
+      const double trapezoidArea = getTrapezoidArea(trapezoidbase1, trapezoidbase2, height);
+      cout << "Площадь трапеции = " << trapezoidArea;
+      break;
+    }
+    case Measuares::CIRCLE_AREA:
+    {
+      double radius;
+      cin >> radius;
+      const double circleArea = getCircleArea(radius);
+      cout << "Площадь круга = " << circleArea;
+      break;
+    }
+    default:
+    break;
+  }
   return 0;
 }
 double getTrapezoidArea(const double trapezoidbase1, const double trapezoidbase2, const double height)
