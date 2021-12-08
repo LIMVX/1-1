@@ -1,43 +1,54 @@
-#include <cmath>
 #include <iostream>
-
+#include <iomanip>
+#include <cmath>
 using namespace std;
+/**
+ * \brief Рассчитывает значение функции в заданной точке \a x.
+ * \param x Заданная точка.
+ * \return Значение функции в заданной точке \a x.
+ */
+double myFunc(double x);
 
 /**
-* \brief Математическая функция, рассчитывающая значение функции y
-* \param x - переменная
-* \return Возвращает значение функции y
-**/
-
-double gety(const double x);
-
-/**
-* \brief Узнает, существует ли функция в заданной точке \a x.
-* \param x Заданная точка.
-* \return true, если значение функции в заданной точке \a x существует.
-*/
+ * \brief Узнает, существует ли функция в заданной точке \a x.
+ * \param x Заданная точка.
+ * \return true, если значение функции в заданной точке \a x существует.
+ */
 bool isCalculated(double x);
 
 /**
-* \brief Точка входа в программу.
-* \return Возвращает 0 в случае успешного выполнения.
-*/
+ * \brief Точка входа в программу.
+ * \return В случаен успеха код 0.
+ */
 int main()
 {
-  const double x = 0.4;
-  const auto y = gety(x);
+    const double X_START = 0.4;
+    const double X_FINISH = 1.0;
+    const double STEP = 0.05;
+    double x = X_START;
+    while(x <= X_FINISH)
+    {
+        if (isCalculated(x))
+        {
+            const double y = myFunc(x);
+            cout << "x = " << setw(5) << left << setprecision(5) << x << " y = " << y << "\n";
+        }
+        else
+        {
+            cout << "x = " << x << " y = не существует" << "\n";
+        }
+
+        x += STEP;
+    }
+    return 0;
 }
 
-double gety(const double x)
+double myFunc(const double x)
 {
-  for(double x = 0.4; x <= 1; x = x + 0.05)
-  {
-    cout << "y = " << x + sqrt(x) + cbrt(x) - 2.5 << endl;
-  }
-  return 1;
+    return x + sqrt(x) + cbrt(x) - 2.5;
 }
 
 bool isCalculated(const double x)
 {
-  return x >= 0;
+    return x >= 0;
 }
