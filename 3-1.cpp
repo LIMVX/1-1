@@ -1,6 +1,6 @@
+#include <cmath>
 #include <iostream>
 #include <iomanip>
-#include <cmath>
 using namespace std;
 /**
  * \brief Рассчитывает значение функции в заданной точке \a x.
