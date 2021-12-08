@@ -4,13 +4,13 @@
 using namespace std;
 
 /**
-* \brief Математическая функция которая расчитывает значение функции y в зависимости от значения переменной x 
+* \brief Математическая функция которая расчитывает значение функции y  
 * \param  a - переменная 1
 * \param  x - переменная 2
 * \return Возвращает значение функции 
 **/
 
-double getx(const double a, const double x, const double b);
+double gety1(const double a, const double x);
 
 /**
 * \brief Математическая функция, рассчитывающая значение функции y 
@@ -19,7 +19,7 @@ double getx(const double a, const double x, const double b);
 * \return Возвращает значение функции y 
 **/
 
-double gety(const double a, const double x, const double b);
+double gety2(const double a, const double x);
 
 /**
 * \brief Точка входа в программу.
@@ -28,26 +28,28 @@ double gety(const double a, const double x, const double b);
 int main()
 {
   const double a = 2.8;
-  const double b = 1.2;
+  const double TRESHOLD = 1.2;
   double x;
   cin >> x;
-  const auto y = gety(a, x, b);
-  cout << "y = " << y;
-}
-
-double getx(const double a, const double x, const double b)
-{
-  if (x < b)
+  if (x < TRESHOLD)
   {
-    return a * pow(x, 2) + 4;
+    const auto y = gety1(a, x);
+    cout << "y = " << y;
   }
-  else 
+  else
   {
-    return (a + 4 * x) * sqrt(pow(x, 2 * a));
+    const auto y = gety2(a, x);
+    cout << "y = " << y;
   }
 }
 
-double gety(const double a, const double x, const double b)
+double gety1(const double a, const double x)
 {
-  return getx(a, x, b); 
+  return a * pow(x, 2) + 4;
 }
+
+double gety2(const double a, const double x)
+{
+  return (a + 4 * x) * sqrt(pow(x, 2 * a));
+}
+
