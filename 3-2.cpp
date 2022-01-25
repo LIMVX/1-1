@@ -45,7 +45,7 @@ int main()
 
 double getCurrent(const int k)
 {
-    return -1.0 / (k + 1);
+    return 1.0 / (2.0 * k + 1);
 }
 
 double getSumm1(int n, int k)
